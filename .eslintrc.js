@@ -1,6 +1,8 @@
 module.exports = {
     env: {
-        browser: true
+        browser: true,
+        amd: true,
+        node: true
     },
     plugins: ["@typescript-eslint"],
     extends: [

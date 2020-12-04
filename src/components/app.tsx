@@ -1,28 +1,44 @@
-import { FunctionalComponent, h } from "preact";
+import { Component, h, VNode } from "preact";
 import { Route, Router, RouterOnChangeArgs } from "preact-router";
 
-import Home from "../routes/home";
-import Profile from "../routes/profile";
-import NotFoundPage from "../routes/notfound";
+import NotFoundPage from "./notfound";
+import ServerFacade from "../server_facade";
 import Header from "./header";
+import Calendar from "./calendar";
 
-const App: FunctionalComponent = () => {
-    let currentUrl: string;
-    const handleRoute = (e: RouterOnChangeArgs) => {
-        currentUrl = e.url;
+class App extends Component {
+    private currentUrl: string;
+    private serverFacade: ServerFacade;
+
+    public constructor() {
+        super();
+        this.currentUrl = "";
+        this.serverFacade = new ServerFacade();
+    }
+
+    private handleRoute = (e: RouterOnChangeArgs) => {
+        this.currentUrl = e.url;
     };
 
-    return (
-        <div id="app">
-            <Header />
-            <Router onChange={handleRoute}>
-                <Route path="/" component={Home} />
-                <Route path="/profile/" component={Profile} user="me" />
-                <Route path="/profile/:user" component={Profile} />
-                <NotFoundPage default />
-            </Router>
-        </div>
-    );
-};
+    public componentDidMount() {
+        this.serverFacade.init(this.currentUrl);
+    }
+
+    public render(): VNode {
+        return (
+            <div id="app">
+                <Header />
+                <Router onChange={this.handleRoute}>
+                    <Calendar
+                        bookings={this.serverFacade.getBookings()}
+                        today={new Date()}
+                        path="/"
+                    />
+                    <NotFoundPage default />
+                </Router>
+            </div>
+        );
+    }
+}
 
 export default App;

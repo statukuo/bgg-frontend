@@ -23,6 +23,8 @@
     "build/*"
   ],
   "dependencies": {
+    "@fullcalendar/daygrid": "^5.4.0",
+    "@fullcalendar/react": "^5.4.0",
     "moment": "^2.29.1",
     "momentjs": "^2.0.0",
     "preact": "^10.3.1",
@@ -32,6 +34,9 @@
     "preact-router": "^3.2.1"
   },
   "devDependencies": {
+    "@fullcalendar/interaction": "^5.4.0",
+    "@fullcalendar/resource-daygrid": "^5.4.0",
+    "@fullcalendar/resource-timegrid": "^5.4.0",
     "@teamsupercell/typings-for-css-modules-loader": "^2.2.0",
     "@types/enzyme": "^3.10.5",
     "@types/jest": "^26.0.8",

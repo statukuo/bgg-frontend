@@ -29,7 +29,7 @@ module.exports = {
     settings: {
         react: {
             pragma: "h",
-            version: "detect"
+            version: "preact"
         },
     },
     overrides: [

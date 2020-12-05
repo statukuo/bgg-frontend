@@ -3,7 +3,6 @@ import { Route, Router, RouterOnChangeArgs } from "preact-router";
 
 import NotFoundPage from "./notfound";
 import ServerFacade from "../server_facade";
-import Header from "./header";
 import Calendar from "./calendar";
 
 class App extends Component {
@@ -27,13 +26,8 @@ class App extends Component {
     public render(): VNode {
         return (
             <div id="app">
-                <Header />
                 <Router onChange={this.handleRoute}>
-                    <Calendar
-                        bookings={this.serverFacade.getBookings()}
-                        today={new Date()}
-                        path="/"
-                    />
+                    <Calendar path="/" />
                     <NotFoundPage default />
                 </Router>
             </div>

@@ -1,19 +1,4 @@
-.calendar {
-    position: absolute;
-    top: 0;
-    width: 100vw;
+.calendar-holder {
     height: 100vh;
-    border: 1px solid #c9c9c9;
-}
-
-.calendar tr td.other {
-    color: grey;
-}
-
-.calendar tr td.current {
-    color: black;
-}
-
-.calendar tr td:last-child {
-    color: red;
+    display: grid;
 }

@@ -3,8 +3,35 @@ import * as style from "./style.css";
 import FullCalendar from "@fullcalendar/react";
 import interactionPlugin from "@fullcalendar/interaction";
 import resourceTimeGridPlugin from "@fullcalendar/resource-timegrid";
+import { Booking } from "../../models/booking";
+import moment from "moment";
+import Sidebar from "../sidebar";
+import CreateEvent from "../create_event";
 
-class Calendar extends Component {
+interface State {
+    showingEvent: Booking;
+}
+
+class Calendar extends Component<{}, State> {
+    public constructor() {
+        super();
+    }
+
+    private createEvent(startTime: Date, endTime: Date): void {
+        this.setState({
+            showingEvent: {
+                date: startTime,
+                duration: moment(startTime).diff(moment(endTime)),
+                attendeesList: [],
+                description: "",
+                maxAttendees: 0,
+                title: ""
+            }
+        });
+
+        Sidebar.open(<CreateEvent prefill={this.state.showingEvent} />);
+    }
+
     public render(): VNode {
         return (
             <div class={style["calendar-holder"]}>
@@ -40,7 +67,7 @@ class Calendar extends Component {
                         }
                     ]}
                     selectable={true}
-                    select={event => console.log(event)}
+                    select={event => this.createEvent(event.start, event.end)}
                     editable={true}
                 />
             </div>

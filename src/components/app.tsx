@@ -1,9 +1,10 @@
 import { Component, h, VNode } from "preact";
-import { Route, Router, RouterOnChangeArgs } from "preact-router";
+import { Router, RouterOnChangeArgs } from "preact-router";
 
 import NotFoundPage from "./notfound";
 import ServerFacade from "../server_facade";
 import Calendar from "./calendar";
+import Sidebar from "./sidebar";
 
 class App extends Component {
     private currentUrl: string;
@@ -26,6 +27,7 @@ class App extends Component {
     public render(): VNode {
         return (
             <div id="app">
+                <Sidebar />
                 <Router onChange={this.handleRoute}>
                     <Calendar path="/" />
                     <NotFoundPage default />

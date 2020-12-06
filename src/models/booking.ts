@@ -7,5 +7,5 @@ export interface Booking {
     description: string;
     maxAttendees: number;
     attendeesList: User[];
-    owner: User;
+    owner?: User;
 }

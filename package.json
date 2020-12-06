@@ -25,6 +25,7 @@
   "dependencies": {
     "@fullcalendar/daygrid": "^5.4.0",
     "@fullcalendar/react": "^5.4.0",
+    "linkstate": "^2.0.0",
     "moment": "^2.29.1",
     "momentjs": "^2.0.0",
     "preact": "^10.3.1",

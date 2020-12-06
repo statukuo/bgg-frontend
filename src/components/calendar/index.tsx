@@ -17,18 +17,24 @@ class Calendar extends Component<{}, State> {
     }
 
     private createEvent(startTime: Date, endTime: Date): void {
-        this.setState({
-            showingEvent: {
-                date: startTime,
-                duration: moment(startTime).diff(moment(endTime)),
-                attendeesList: [],
-                description: "",
-                maxAttendees: 0,
-                title: ""
-            }
-        });
-
-        Sidebar.open(<CreateEvent prefill={this.state.showingEvent} />);
+        this.setState(
+            {
+                showingEvent: {
+                    date: startTime,
+                    duration:
+                        moment(endTime).diff(moment(startTime)) /
+                        1000 /
+                        60 /
+                        60,
+                    attendeesList: [],
+                    description: "",
+                    maxAttendees: 0,
+                    title: ""
+                }
+            },
+            () =>
+                Sidebar.open(<CreateEvent prefill={this.state.showingEvent} />)
+        );
     }
 
     public render(): VNode {

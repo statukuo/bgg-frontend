@@ -11,6 +11,22 @@ describe("Sidebar", () => {
     });
 
     test("Renders a create event div", () => {
-        expect(context.find("div").exists()).toBe(true);
+        expect(context.find("div#sidebar").exists()).toBe(true);
+    });
+
+    test("Opens the sidebar", () => {
+        expect(context.find("div#sidebar.open").exists()).toBe(false);
+
+        Sidebar.open(<p>Test</p>);
+        context.update();
+        expect(context.find("div#sidebar.open").exists()).toBe(true);
+    });
+
+    test("Renders a child node when open", () => {
+        expect(context.find("div#sidebar p").exists()).toBe(false);
+
+        Sidebar.open(<p>Test</p>);
+        context.update();
+        expect(context.find("div#sidebar p").exists()).toBe(true);
     });
 });

@@ -13,4 +13,8 @@ describe("Calendar", () => {
     test("Renders a fullCalendar component", () => {
         expect(context.find("FullCalendar").length).toBe(1);
     });
+
+    test("Renders a div as calendar holder", () => {
+        expect(context.find(".calendar-holder").length).toBe(1);
+    });
 });

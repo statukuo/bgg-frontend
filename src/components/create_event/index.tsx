@@ -1,6 +1,5 @@
 import { Component, h, VNode } from "preact";
 import { Booking } from "../../models/booking";
-import * as style from "./style.css";
 
 interface Props {
     prefill: Booking;
@@ -17,6 +16,6 @@ export default class CreateEvent extends Component<Props, State> {
     }
 
     public render(): VNode {
-        return <div class={style.event}></div>;
+        return <div class="event"></div>;
     }
 }

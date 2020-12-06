@@ -1,6 +1,5 @@
 import { h, VNode, Component } from "preact";
 import EventEmitter from "eventemitter3";
-import * as style from "./style.css";
 
 interface State {
     content: VNode | null;
@@ -21,7 +20,7 @@ export default class Sidebar extends Component<{}, State> {
 
     public render(_: {}, { content }: State): VNode {
         return (
-            <div id={style.sidebar} class={content ? style.open : ""}>
+            <div id="sidebar" class={content ? "open" : ""}>
                 {content}
             </div>
         );

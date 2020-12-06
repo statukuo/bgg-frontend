@@ -21,6 +21,6 @@ describe("Create Event", () => {
     });
 
     test("Renders a create event div", () => {
-        expect(context.find("div").exists()).toBe(true);
+        expect(context.find("div.event").exists()).toBe(true);
     });
 });

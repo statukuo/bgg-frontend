@@ -1,5 +1,4 @@
 import { Component, h, VNode } from "preact";
-import * as style from "./style.css";
 import FullCalendar from "@fullcalendar/react";
 import interactionPlugin from "@fullcalendar/interaction";
 import resourceTimeGridPlugin from "@fullcalendar/resource-timegrid";
@@ -34,7 +33,7 @@ class Calendar extends Component<{}, State> {
 
     public render(): VNode {
         return (
-            <div class={style["calendar-holder"]}>
+            <div class="calendar-holder">
                 <FullCalendar
                     schedulerLicenseKey={
                         "CC-Attribution-NonCommercial-NoDerivatives"

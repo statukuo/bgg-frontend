@@ -1,7 +1,17 @@
 import { Component, h, VNode } from "preact";
 import { Booking } from "../../models/booking";
+import {
+    Button,
+    Form,
+    FormGroup,
+    FormText,
+    Input,
+    InputGroup,
+    InputGroupAddon,
+    InputGroupText,
+    Label
+} from "reactstrap";
 import linkState from "linkstate";
-import moment from "moment";
 
 interface Props {
     prefill: Booking;
@@ -12,6 +22,10 @@ interface State {
 }
 
 export default class CreateEvent extends Component<Props, State> {
+    private handleFab = () => {
+        alert("You clicked New!");
+    };
+
     public constructor(props: Props) {
         super();
         this.setState({ booking: props.prefill });
@@ -19,45 +33,36 @@ export default class CreateEvent extends Component<Props, State> {
 
     public render(_: Props, { booking }: State): VNode {
         return (
-            <div class="event">
-                <ul>
-                    <li id="title">
-                        <h1>Titulo</h1>
-                        <input
-                            type="text"
-                            value={booking.title}
-                            onChange={linkState(this, "title")}
-                        />
-                    </li>
-                    <li id="date">
-                        <h1>Hora inicio</h1>
-                        <input
-                            type="date"
-                            value={moment(booking.date.getTime()).format(
-                                "yyyy-MM-DD"
-                            )}
-                            onChange={linkState(this, "date")}
-                        />
-                    </li>
-                    <li id="duration">
-                        <h1>Duración</h1>
-                        <input
-                            type="number"
-                            value={booking.duration}
-                            step=".5"
-                            onChange={linkState(this, "duration")}
-                        />
-                    </li>
-                    <li id="description">
-                        <h1>Descripción</h1>
-                        <input
-                            type="text"
-                            value={booking.description}
-                            onChange={linkState(this, "description")}
-                        />
-                    </li>
-                </ul>
-            </div>
+            <Form>
+                <FormGroup>
+                    <Label id="label-title" for="title">
+                        Titulo
+                    </Label>
+                    <Input
+                        type="text"
+                        name="title"
+                        id="title"
+                        placeholder="Titulo"
+                    />
+                </FormGroup>
+                <FormGroup>
+                    <Label id="label-description" for="desciption">
+                        Descripción
+                    </Label>
+                    <Input
+                        type="textarea"
+                        name="description"
+                        id="description"
+                    />
+                </FormGroup>
+                <Button
+                    onClick={(event: Event): void => {
+                        event.preventDefault();
+                    }}
+                >
+                    Submit
+                </Button>
+            </Form>
         );
     }
 }

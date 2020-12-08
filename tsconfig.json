@@ -8,8 +8,8 @@
         // "checkJs": true,                       /* Report errors in .js files. */
         "jsx": "react",                           /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
         "jsxFactory": "h",                        /* Specify the JSX factory function to use when targeting react JSX emit, e.g. React.createElement or h. */
-        // "declaration": true,                   /* Generates corresponding '.d.ts' file. */
-        // "sourceMap": true,                     /* Generates corresponding '.map' file. */
+        "declaration": true,                   /* Generates corresponding '.d.ts' file. */
+        "sourceMap": true,                     /* Generates corresponding '.map' file. */
         // "outFile": "./",                       /* Concatenate and emit output to single file. */
         // "outDir": "./",                        /* Redirect output structure to the directory. */
         // "rootDir": "./",                       /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
@@ -34,11 +34,11 @@
 
         /* Module Resolution Options */
         "moduleResolution": "node",               /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
-        // "baseUrl": "./",                       /* Base directory to resolve non-absolute module names. */
+        "baseUrl": "./",                       /* Base directory to resolve non-absolute module names. */
         // "paths": {},                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
         // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
         // "typeRoots": [],                       /* List of folders to include type definitions from. */
-        // "types": [],                           /* Type declaration files to be included in compilation. */
+        "types": [ "node", "enzyme-adapter-preact-pure", "jest" ],
         // "allowSyntheticDefaultImports": true,  /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
         // "preserveSymlinks": true,              /* Do not resolve the real path of symlinks. */
 
@@ -53,7 +53,14 @@
         // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
         "esModuleInterop": true,
         "resolveJsonModule": true,
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "paths": {
+            "react": ["node_modules/preact/compat"],
+            "react-dom": ["node_modules/preact/compat"]
+        }
     },
-    "include": ["src/**/*.tsx", "src/**/*.ts", "tests/**/*.tsx", "tests/**/*.ts"]
+    "include": ["src/**/*.tsx", "src/**/*.ts", "tests/**/*.tsx", "tests/**/*.ts"],
+    "exclude": [
+        "node_modules"
+    ]
 }

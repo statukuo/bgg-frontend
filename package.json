@@ -25,6 +25,7 @@
   "dependencies": {
     "@fullcalendar/daygrid": "^5.4.0",
     "@fullcalendar/react": "^5.4.0",
+    "bootstrap": "^4.5.3",
     "linkstate": "^2.0.0",
     "moment": "^2.29.1",
     "momentjs": "^2.0.0",
@@ -32,9 +33,12 @@
     "preact-jsx-chai": "^3.0.0",
     "preact-markup": "^2.0.0",
     "preact-render-to-string": "^5.1.4",
-    "preact-router": "^3.2.1"
+    "preact-router": "^3.2.1",
+    "reactstrap": "^8.7.1"
   },
   "devDependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.12.7",
+    "@babel/plugin-transform-react-jsx-source": "^7.12.1",
     "@fullcalendar/interaction": "^5.4.0",
     "@fullcalendar/resource-daygrid": "^5.4.0",
     "@fullcalendar/resource-timegrid": "^5.4.0",

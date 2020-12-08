@@ -21,59 +21,45 @@ describe("Create Event", () => {
         context = shallow(<CreateEvent prefill={prefill} />);
     });
 
-    test("Renders a create event div", () => {
-        expect(context.find("div.event").exists()).toBe(true);
+    test("Renders a create Form", () => {
+        expect(context.find("Form").exists()).toBe(true);
     });
 
-    test("Renders 4 inputs", () => {
-        expect(context.find("input").length).toBe(4);
+    test("Renders 2 FormGroup", () => {
+        expect(context.find("FormGroup").length).toBe(2);
     });
 
     describe("Title", () => {
         test("shows a title", () => {
-            const titleInput = context.find("li#title");
-            expect(titleInput.find("h1").text()).toBe("Titulo");
+            expect(context.find("#label-title").exists()).toBe(true);
         });
+
         test("prefills the content", () => {
-            const titleInput = context.find("li#title");
-            expect(titleInput.find("input").prop("value")).toBe("Just a title");
+            expect(context.find("#title").exists()).toBe(true);
+            expect(context.find("#title").props()).toMatchObject({
+                type: "text",
+                name: "title",
+                id: "title",
+                placeholder: "Titulo"
+            });
         });
     });
 
-    describe("Description", () => {
+    describe("Title", () => {
         test("shows a title", () => {
-            const titleInput = context.find("li#description");
-            expect(titleInput.find("h1").text()).toBe("Descripción");
+            expect(context.find("#label-description").exists()).toBe(true);
         });
         test("prefills the content", () => {
-            const titleInput = context.find("li#description");
-            expect(titleInput.find("input").prop("value")).toBe(
-                "A random description"
-            );
+            expect(context.find("#description").props()).toMatchObject({
+                type: "textarea",
+                name: "description"
+            });
         });
     });
 
-    describe("Date", () => {
-        test("shows a title", () => {
-            const titleInput = context.find("li#date");
-            expect(titleInput.find("h1").text()).toBe("Hora inicio");
-        });
-        test("prefills the content", () => {
-            const titleInput = context.find("li#date");
-            expect(titleInput.find("input").prop("value")).toBe(
-                moment(prefill.date).format("yyy-MM-DD")
-            );
-        });
-    });
-
-    describe("Duration", () => {
-        test("shows a title", () => {
-            const titleInput = context.find("li#duration");
-            expect(titleInput.find("h1").text()).toBe("Duración");
-        });
-        test("prefills the content", () => {
-            const titleInput = context.find("li#duration");
-            expect(titleInput.find("input").prop("value")).toBe(2);
+    describe("button", () => {
+        test("shows a button", () => {
+            expect(context.find("Button").exists()).toBe(true);
         });
     });
 });
